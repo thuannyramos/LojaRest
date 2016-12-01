@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="LojaAppRest.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LojaAppRest"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Pivot Title="Pivot">
+            <PivotItem Header="Fabricantes">
+                <Grid>
+                    <TextBox x:Name="tbID" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="id" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbDescricao" HorizontalAlignment="Left" Margin="79,10,0,0" TextWrapping="Wrap" Text="Descrição" VerticalAlignment="Top"/>
+                    <Button x:Name="btnInserirFAB" Content="Inserir" HorizontalAlignment="Left" Margin="169,10,0,0" VerticalAlignment="Top" Click="btnInserirFAB_Click"/>
+                    <Button x:Name="btnListFAB" Content="Listar" HorizontalAlignment="Left" Margin="235,10,0,0" VerticalAlignment="Top" Click="btnListFAB_Click"/>
+                    <ListView x:Name="ListBoxFabricantes" HorizontalAlignment="Left" Height="488" Margin="10,47,0,0" VerticalAlignment="Top" Width="316"/>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="Veículos">
+                <Grid>
+                    <TextBox x:Name="tbIDv" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="id" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbModelo" HorizontalAlignment="Left" Margin="79,10,0,0" TextWrapping="Wrap" Text="Modelo" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbAno" HorizontalAlignment="Left" Margin="156,10,0,0" TextWrapping="Wrap" Text="Ano" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbPreco" HorizontalAlignment="Left" Margin="225,10,0,0" TextWrapping="Wrap" Text="Preço" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="cbFabricante" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="btInsert" Content="Inserir" HorizontalAlignment="Left" Margin="135,47,0,0" VerticalAlignment="Top" Click="btInsert_Click"/>
+                    <Button x:Name="btnListV" Content="Listar" HorizontalAlignment="Left" Margin="201,47,0,0" VerticalAlignment="Top" Click="btnListV_Click"/>
+                    <ListView x:Name="lvVeiculo" HorizontalAlignment="Left" Height="451" Margin="10,84,0,0" VerticalAlignment="Top" Width="316"/>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="Disponíveis">
+                <Grid/>
+            </PivotItem>
+            <PivotItem Header="Vendidos">
+                <Grid/>
+            </PivotItem>
+        </Pivot>
+
+    </Grid>
+</Page>
