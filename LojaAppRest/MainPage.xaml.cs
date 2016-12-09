@@ -30,6 +30,17 @@ namespace LojaAppRest
         {
             this.InitializeComponent();
             setFab();
+            PopularVD();
+        }
+        private async void PopularVD()
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(ip);
+            var response = await httpClient.GetAsync("/api/veiculo/");
+            var str = response.Content.ReadAsStringAsync().Result;
+            List<Models.Veiculo> obj = JsonConvert.DeserializeObject<List<Models.Veiculo>>(str);
+            LVdisponiveis.ItemsSource = obj.Where(v => v.SituVenda == false).ToList();
+            LVvendidos.ItemsSource = obj.Where(v => v.SituVenda == true).ToList();
         }
         private async void setFab()
         {
@@ -104,5 +115,26 @@ namespace LojaAppRest
             List<Models.Veiculo> obj = JsonConvert.DeserializeObject<List<Models.Veiculo>>(str);
             lvVeiculo.ItemsSource = obj.ToList();
         }
+
+        private async void BtnVender_Click(object sender, RoutedEventArgs e)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(ip);
+            Models.Veiculo f = (Models.Veiculo)LVdisponiveis.SelectedItem;
+            Models.Veiculo ff = new Models.Veiculo
+            {
+                Id = f.Id,
+                Modelo = f.Modelo,
+                Ano = f.Ano,
+                Preco = f.Preco,
+                IdFabricante = f.IdFabricante,
+                SituVenda = true
+            };
+            string s = "=" + JsonConvert.SerializeObject(f);
+            var content = new StringContent(s, Encoding.UTF8, "application/x-www-form-urlencoded");
+            await httpClient.PutAsync("/api/veiculo/" + f.Id, content);
+        }
+
+        
     }
 }

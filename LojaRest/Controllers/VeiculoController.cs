@@ -10,7 +10,7 @@ namespace LojaRest.Controllers
 {
     public class VeiculoController : ApiController
     {
-        // GET api/veiculo
+        // GET api/fabricante
         public IEnumerable<Models.Veiculo> Get()
         {
             Models.LojaDataContext dc = new Models.LojaDataContext();
@@ -18,7 +18,7 @@ namespace LojaRest.Controllers
             return r.ToList();
         }
 
-        [Route("API/VeicPost")]
+    [Route("API/VeicPost")]
         [HttpPost]
         public void Post([FromBody] string value)
         {
